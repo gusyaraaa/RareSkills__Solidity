@@ -7,10 +7,14 @@ async function main() {
   const HelloWorld = await ethers.getContractFactory('HelloWorld', owner);
   const helloWorld = await HelloWorld.deploy();
 
+  const Types = await ethers.getContractFactory('Types', owner);
+  const types = await Types.deploy();
+
   fs.writeFileSync(
     'contract-addresses.json',
     JSON.stringify({
       helloWorld: await helloWorld.getAddress(),
+      types: await types.getAddress(),
     }),
   );
 }
